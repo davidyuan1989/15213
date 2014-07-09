@@ -1,0 +1,51 @@
+
+for (col = 0; col < 64; col = col + 8){//A[i][col],B[col][i]
+            for (row = 0; row < 64; row = row + 8){
+                for (i = row; i < row + 4; i++){
+                     tmp0 = A[i][col];
+                     tmp1 = A[i][col+1];
+                     tmp2 = A[i][col+2];
+                     tmp3 = A[i][col+3];
+                     tmp4 = A[i][col+4];
+                     tmp5 = A[i][col+5];
+                     tmp6 = A[i][col+6];
+                     tmp7 = A[i][col+7];
+                     B[col][i] = tmp0;
+                     B[col+1][i] = tmp1;
+                     B[col+2][i] = tmp2;
+                     B[col+3][i] = tmp3;
+                     B[col][i+4] = tmp4;
+                     B[col+1][i+4] = tmp5;
+                     B[col+2][i+4] = tmp6;
+                     B[col+3][i+4] = tmp7;
+                }
+                for (i = col; i < col + 4; i++){
+                     tmp0 = B[i][row+4];
+                     tmp1 = B[i][row+5];
+                     tmp2 = B[i][row+6];
+                     tmp3 = B[i][row+7];
+                     tmp4 = A[row+4][i];
+                     tmp5 = A[row+5][i];
+                     tmp6 = A[row+6][i];
+                     tmp7 = A[row+7][i];
+                     B[i][row+4] = tmp4;
+                     B[i][row+5] = tmp5;
+                     B[i][row+6] = tmp6;
+                     B[i][row+7] = tmp7;
+                     B[i+4][row] = tmp0;
+                     B[i+4][row+1] = tmp1;
+                     B[i+4][row+2] = tmp2;
+                     B[i+4][row+3] = tmp3;
+                }
+                for (i = col + 4; i < col + 8; i ++){
+                     tmp0 = A[row+4][i];
+                     tmp1 = A[row+5][i];
+                     tmp2 = A[row+6][i];
+                     tmp3 = A[row+7][i];
+                     B[i][row+4] = tmp0;
+                     B[i][row+5] = tmp1;
+                     B[i][row+6] = tmp2;
+                     B[i][row+7] = tmp3;
+                }
+            }
+        }
